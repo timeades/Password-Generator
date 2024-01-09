@@ -26,8 +26,8 @@ The following image shows the web application's appearance and functionality whe
 
 ## Getting Started
 
-Clone the repository
-Open the index.html file in your browser.
+* Clone the repository
+* Open the index.html file in your browser.
 
-or you can view a deployed version here: 
+or you can view a deployed version here: https://timeades.github.io/Password-Generator/
 
