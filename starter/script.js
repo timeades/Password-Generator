@@ -88,52 +88,53 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-// Function to prompt user for password options
-function getPasswordOptions() {
-  var length = parseInt(prompt('How many characters would you like your password to be?'));
+// Prompt for password length
+function generatePassword() {
+  // Prompt for password length
+  let length = parseInt(prompt("Enter the length of the password (between 8 and 128):"));
+
+  // Validate password length
   if (isNaN(length) || length < 8 || length > 128) {
-    alert('Please enter a number between 8 and 128');
+    alert("Invalid password length. Please enter a number between 8 and 128.");
     return;
   }
 
-  var includeLowerCase = confirm('Would you like to include lowercase characters in your password?');
-  var includeUpperCase = confirm('Would you like to include uppercase characters in your password?');
-  var includeNumeric = confirm('Would you like to include numeric characters in your password?');
-  var includeSpecialCharacters = confirm('Would you like to include special characters in your password?');
+  // Prompt for character types
+  let lowercase = confirm("Include lowercase characters?");
+  let uppercase = confirm("Include uppercase characters?");
+  let numeric = confirm("Include numeric characters?");
+  let special = confirm("Include special characters?");
 
-  // Check if at least one option is selected
-  if (!(includeLowerCase || includeUpperCase || includeNumeric || includeSpecialCharacters)) {
+  // Validate at least one character type is selected
+  if (!(lowercase || uppercase || numeric || special)) {
     alert('Please select at least one option');
     return;
   }
 
-  // Generate password based on selected options
-  var password = generatePassword(length, includeLowerCase, includeUpperCase, includeNumeric, includeSpecialCharacters);
+  // Generate the password
+  let password = generatePasswordWithCriteria(length, lowercase, uppercase, numeric, special);
 
-  // Display the generated password
-  alert("Generated Password: " + password);
+  // Display the password
+  document.getElementById("password").textContent = 'Your new password is ' + password;
 }
 
-// Function for getting a random element from an array
-function getRandom(arr) {
+function generatePasswordWithCriteria(length, lowercase, uppercase, numeric, special) {
+  const lowercaseChars = lowerCasedCharacters;
+  const uppercaseChars = upperCasedCharacters;
+  const numericChars = numericCharacters;
+  const specialChars = specialCharacters;
 
+  let allChars = "";
+  if (lowercase) allChars += lowercaseChars;
+  if (uppercase) allChars += uppercaseChars;
+  if (numeric) allChars += numericChars;
+  if (special) allChars += specialChars;
+
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    let randomIndex = Math.floor(Math.random() * allChars.length);
+    password += allChars.charAt(randomIndex);
+  }
+
+  return password;
 }
-
-// Function to generate password with user input
-function generatePassword() {
-
-}
-
-// Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
-
-  passwordText.value = password;
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
