@@ -100,10 +100,10 @@ function generatePassword() {
   }
 
   // Prompt for character types
-  let lowercase = confirm("Include lowercase characters?");
-  let uppercase = confirm("Include uppercase characters?");
-  let numeric = confirm("Include numeric characters?");
-  let special = confirm("Include special characters?");
+  let lowercase = confirm("Include lowercase characters? Please select OK for yes, or Cancel for no.");
+  let uppercase = confirm("Include uppercase characters? Please select OK for yes, or Cancel for no.");
+  let numeric = confirm("Include numeric characters? Please select OK for yes, or Cancel for no.");
+  let special = confirm("Include special characters? Please select OK for yes, or Cancel for no.");
 
   // Validate at least one character type is selected
   if (!(lowercase || uppercase || numeric || special)) {
