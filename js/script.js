@@ -125,10 +125,11 @@ function generatePasswordWithCriteria(length, lowercase, uppercase, numeric, spe
   const specialChars = specialCharacters;
 
   let allChars = "";
-  if (lowercase) allChars += lowercaseChars;
-  if (uppercase) allChars += uppercaseChars;
-  if (numeric) allChars += numericChars;
-  if (special) allChars += specialChars;
+  if (lowercase) allChars += lowercaseChars.join('');
+  if (uppercase) allChars += uppercaseChars.join('');
+  if (numeric) allChars += numericChars.join('');
+  if (special) allChars += specialChars.join('');
+
 
   let password = "";
   for (let i = 0; i < length; i++) {
