@@ -154,7 +154,6 @@ button[disabled] {
 #username {
   font-size: 1rem;
 }
-}
 
 @media (max-width: 500px) {
   .btn {
