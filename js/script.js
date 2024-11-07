@@ -139,3 +139,48 @@ function generatePasswordWithCriteria(length, lowercase, uppercase, numeric, spe
 
   return password;
 }
+
+// Prompt for username length
+function generateUsername() {
+  // Prompt for username length
+  let length = parseInt(prompt("Enter the length of the username (between 8 and 15):"));
+
+  // Validate username length
+  if (isNaN(length) || length < 8 || length > 15) {
+    alert("Invalid password length. Please enter a number between 8 and 15.");
+    return;
+  }
+
+  // Prompt for character types
+  let lowercase = confirm("Include lowercase characters?");
+  let uppercase = confirm("Include uppercase characters?");
+
+  // Validate at least one character type is selected
+  if (!(lowercase || uppercase )) {
+    alert('Please select at least one option');
+    return;
+  }
+
+  // Generate the username
+  let username = generateUsernameWithCriteria(length, lowercase, uppercase);
+
+  // Display the username
+  document.getElementById("username").textContent = 'Your new username is ' + username + '@mail.com';
+}
+
+function generateUsernameWithCriteria(length, lowercase, uppercase) {
+  const lowercaseChars = lowerCasedCharacters;
+  const uppercaseChars = upperCasedCharacters;
+
+  let allChars = "";
+  if (lowercase) allChars += lowercaseChars.join('');
+  if (uppercase) allChars += uppercaseChars.join('');
+
+  let username = "";
+  for (let i = 0; i < length; i++) {
+    let randomIndex = Math.floor(Math.random() * allChars.length);
+    username += allChars.charAt(randomIndex);
+  }
+
+  return username;
+}
