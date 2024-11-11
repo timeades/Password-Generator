@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.4/dist/themes/default.css" />
+    <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-alpha.4/dist/webawesome.loader.js"></script>
+</head>
+<body>
+    <wa-card with-image with-footer class="card-overview">
+        <img
+          slot="image"
+          src="./assets/Strong-Passwords.jpg"
+          alt="Strong Passwords"
+        />
+      
+        <strong>Generate Random Password</strong><br />
+        Select from the options below to generate a random password<br />
+        <small>Choose at least length and one characture set</small>
+        <br/>
+        <div class="inputs">
+            <input type="number" id="length" name="length" min="14" max="50" />
+            <label for="length">Length</label>
+            <br/>
+            <input type="radio" id="upper" />
+            <label for="upper">Uppercase</label>
+            <br/>
+            <input type="radio" id="lower" />
+            <label for="lower">Lowercase</label>
+            <br/>
+            <input type="radio" id="number" />
+            <label for="number">Numbers</label>
+            <br/>
+            <input type="radio" id="symbol" />
+            <label for="symbol">Symbols</label>
+            <br/>
+            <wa-button variant="brand" size="small" pill>Clear selection</wa-button>
+        </div>
+      
+        <div slot="footer">
+          <wa-button variant="brand" pill>Generate Password</wa-button>
+        </div>
+        <div>
+            <textarea
+              readonly
+              id="password"
+              class="password"
+              placeholder="Your new password is........."></textarea>
+        </div>
+      </wa-card>
+      
+      <style>
+        .card-overview {
+          max-width: 300px;
+          outline: auto;
+        }
+      
+        .card-overview small {
+          color: var(--wa-color-text-quiet);
+        }
+
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            font-size: 1rem;
+            font-family: var(--wa-font-family-base);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+      
+        .card-overview [slot='footer'] {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        #password {
+            width: 100%;
+            height: 50px;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-family: var(--wa-font-family-base);
+            padding: 0.5rem;
+            border: 1px solid;
+            border-radius: 0.25rem;
+        }
+      </style>  
+</body>
+</html>
